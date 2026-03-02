@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { getFeedbackForRecipient } from "@/lib/actions";
 import { slugToName } from "@/lib/people";
