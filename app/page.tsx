@@ -29,7 +29,7 @@ export default async function HomePage() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
             Dashboard
           </p>
-          <h1 className="font-serif-display text-[24px] lg:text-[30px] font-bold text-white leading-tight">
+          <h1 className="font-serif-display text-[26px] lg:text-[32px] font-bold text-white leading-tight">
             Chasing Impact: NUSA 360° Team Reflection
           </h1>
           <p className="mt-2 text-[12.5px] text-muted-text">

@@ -30,7 +30,7 @@ export default async function ViewFeedbackPage({ params }: Props) {
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
               Peer Feedback
             </p>
-            <h1 className="font-serif-display italic text-[26px] lg:text-[32px] font-bold text-white">
+            <h1 className="font-serif-display text-[26px] lg:text-[32px] font-bold text-white">
               {recipientName}
             </h1>
             <p className="mt-1 text-[12.5px] text-muted-text">

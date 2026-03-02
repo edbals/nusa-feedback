@@ -17,7 +17,7 @@ export default async function ViewAllPage() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
             Activity
           </p>
-          <h1 className="font-serif-display italic text-[28px] lg:text-[34px] font-bold text-white">
+          <h1 className="font-serif-display text-[28px] lg:text-[34px] font-bold text-white">
             All Feedback
           </h1>
           <p className="mt-2 text-[12.5px] text-muted-text">
