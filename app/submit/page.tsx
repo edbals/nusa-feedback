@@ -5,16 +5,19 @@ export default function SubmitPage() {
     <div className="px-6 py-8 lg:px-10 lg:py-10">
       <div className="max-w-6xl mx-auto">
         <header className="mb-6">
-          <h1 className="text-2xl lg:text-[28px] font-bold text-body-text">
-            Give feedback
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
+            Feedback
+          </p>
+          <h1 className="font-serif-display italic text-[28px] lg:text-[34px] font-bold text-white">
+            Give Feedback
           </h1>
-          <p className="mt-2 text-sm text-muted-text">
-            Share constructive, anonymous feedback with any NUSA team member.
+          <p className="mt-2 text-[12.5px] text-muted-text">
+            → Share constructive, anonymous feedback with any NUSA team member.
           </p>
         </header>
 
         <div className="max-w-[560px]">
-          <div className="bg-card-bg rounded-xl shadow-card-strong p-6 sm:p-8">
+          <div className="bg-hero-card-bg rounded-[10px] shadow-card-strong p-6 sm:p-8">
             <SubmitForm />
           </div>
         </div>

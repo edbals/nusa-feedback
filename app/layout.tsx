@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import BottomNav from "@/components/BottomNav";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   display: "swap",
-});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  variable: "--font-dm-serif",
-  display: "swap",
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -27,14 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmSerif.variable}`}>
-      <body className="min-h-screen bg-outer-bg text-body-text antialiased">
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen bg-outer-bg text-body-text antialiased glow-bg">
         <div className="min-h-screen flex">
           <Sidebar />
-          <div className="flex-1 bg-app-shell-bg">
+          <div className="flex-1 relative z-10 pb-16 md:pb-0">
             <main className="animate-page-in min-h-screen">{children}</main>
           </div>
         </div>
+        <BottomNav />
       </body>
     </html>
   );

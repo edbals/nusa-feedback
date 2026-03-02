@@ -14,31 +14,38 @@ export default async function ViewFeedbackPage({ params }: Props) {
 
   const feedback = await getFeedbackForRecipient(recipientName);
 
+  const initials = recipientName
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase();
+
   return (
     <div className="px-6 py-8 lg:px-10 lg:py-10">
       <div className="max-w-4xl mx-auto space-y-6">
+
+        {/* Header */}
         <header className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-full bg-accent-secondary flex items-center justify-center text-[18px] font-semibold text-accent-primary">
-            {recipientName
-              .split(" ")
-              .map((p) => p[0])
-              .join("")
-              .toUpperCase()}
+          <div className="h-14 w-14 rounded-full bg-accent-secondary/20 border-2 border-accent-secondary/40 flex items-center justify-center text-[18px] font-semibold text-accent-secondary shrink-0">
+            {initials}
           </div>
           <div>
-            <h1 className="text-2xl lg:text-[28px] font-bold text-body-text">
-              Feedback for {recipientName}
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
+              Peer Feedback
+            </p>
+            <h1 className="font-serif-display italic text-[26px] lg:text-[32px] font-bold text-white">
+              {recipientName}
             </h1>
-            <p className="mt-1 text-sm text-muted-text">
-              {feedback.length}{" "}
+            <p className="mt-1 text-[12.5px] text-muted-text">
+              <span className="text-accent-primary font-semibold">{feedback.length}</span>{" "}
               {feedback.length === 1 ? "response" : "responses"} collected.
             </p>
           </div>
         </header>
 
         {feedback.length === 0 ? (
-          <div className="bg-card-bg rounded-xl shadow-card p-10 text-center">
-            <p className="text-sm text-muted-text">
+          <div className="bg-card-bg rounded-[10px] shadow-card p-10 text-center">
+            <p className="text-[12.5px] text-muted-text">
               No feedback yet. Be the first to share something.
             </p>
           </div>
@@ -47,28 +54,31 @@ export default async function ViewFeedbackPage({ params }: Props) {
             {feedback.map((entry, i) => (
               <li
                 key={entry.id}
-                className="bg-card-bg rounded-xl shadow-card p-5 opacity-0 animate-stagger-fade"
+                className="bg-card-bg rounded-[10px] shadow-card p-5 opacity-0 animate-stagger-fade"
                 style={{ animationDelay: `${i * 60}ms` }}
               >
                 <div className="space-y-4">
                   <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-muted-text mb-1">
-                      ✦ What they like
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-2">
+                      → What they like
                     </p>
-                    <p className="text-sm text-body-text whitespace-pre-wrap">
+                    <p className="text-[12.5px] text-white whitespace-pre-wrap">
                       {entry.what_i_like}
                     </p>
                   </div>
+
                   <hr className="border-divider" />
+
                   <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-muted-text mb-1">
-                      ↑ What could improve
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-secondary mb-2">
+                      → What could improve
                     </p>
-                    <p className="text-sm text-body-text whitespace-pre-wrap">
+                    <p className="text-[12.5px] text-white whitespace-pre-wrap">
                       {entry.can_improve}
                     </p>
                   </div>
-                  <p className="text-xs text-muted-text text-right">
+
+                  <p className="text-[11px] text-muted-text text-right">
                     {formatRelativeTime(entry.created_at)}
                   </p>
                 </div>

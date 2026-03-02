@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -14,37 +13,38 @@ function initialsFromName(name: string) {
   );
 }
 
-type NavItem = {
-  label: string;
-  href: string;
-};
+type NavItem = { label: string; href: string };
 
 const primaryNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Give Feedback", href: "/submit" },
-  { label: "View All Feedback", href: "/view/all" },
+  { label: "View All", href: "/view/all" },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex md:flex-col w-60 bg-sidebar-bg text-body-text border-r border-divider">
-      <div className="flex-1 flex flex-col px-5 pt-6 pb-4 overflow-y-auto sidebar-scroll">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="h-9 w-9 rounded-full bg-accent-secondary flex items-center justify-center text-accent-primary">
-            {/* simple chat bubble icon */}
-            <span className="text-lg leading-none">💬</span>
+    <aside className="hidden md:flex md:flex-col w-56 bg-sidebar-bg text-body-text border-r border-divider shrink-0 relative z-10">
+      <div className="flex-1 flex flex-col px-4 pt-6 pb-4 overflow-y-auto sidebar-scroll">
+
+        {/* Logo */}
+        <div className="flex items-center gap-3 mb-8 px-1">
+          <div className="h-8 w-8 rounded-full bg-accent-primary/10 border border-accent-primary/40 flex items-center justify-center">
+            <span className="text-accent-primary text-xs font-bold">N</span>
           </div>
           <div>
-            <div className="font-serif-display italic text-[20px] leading-none">
+            <div className="font-serif-display italic text-[18px] leading-none text-white">
               NUSA
             </div>
-            <div className="text-xs text-muted-text mt-1">team feedback</div>
+            <div className="text-[10px] text-muted-text mt-0.5 tracking-[0.1em] uppercase">
+              team feedback
+            </div>
           </div>
         </div>
 
-        <nav className="space-y-1 mb-8">
+        {/* Primary nav */}
+        <nav className="space-y-0.5 mb-8">
           {primaryNav.map((item) => {
             const active =
               item.href === "/"
@@ -54,26 +54,25 @@ export default function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] font-medium transition-colors ${
                   active
-                    ? "bg-accent-primary text-white"
-                    : "text-muted-text hover:bg-card-bg"
+                    ? "bg-accent-primary/10 text-accent-primary border border-accent-primary/25"
+                    : "text-muted-text hover:text-white hover:bg-white/5"
                 }`}
               >
-                <span className="w-5 h-5 rounded-full bg-accent-secondary flex items-center justify-center text-[11px] text-accent-primary font-semibold">
-                  {item.label.charAt(0)}
-                </span>
-                <span>{item.label}</span>
+                <span className="text-accent-primary/70">→</span>
+                {item.label}
               </Link>
             );
           })}
         </nav>
 
-        <div className="mb-2 text-[11px] font-medium tracking-[0.08em] uppercase text-muted-text">
+        {/* Members section */}
+        <div className="mb-3 text-[11px] font-semibold tracking-[0.14em] uppercase text-accent-primary px-3">
           Members
         </div>
 
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {PEOPLE.map((person) => {
             const slug = nameToSlug(person);
             const href = `/view/${slug}`;
@@ -82,13 +81,13 @@ export default function Sidebar() {
               <Link
                 key={person}
                 href={href}
-                className={`flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors ${
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] transition-colors ${
                   active
-                    ? "bg-accent-primary text-white"
-                    : "text-body-text hover:bg-card-bg"
+                    ? "bg-accent-primary/10 text-accent-primary border border-accent-primary/25"
+                    : "text-muted-text hover:text-white hover:bg-white/5"
                 }`}
               >
-                <div className="h-7 w-7 rounded-full bg-accent-secondary flex items-center justify-center text-[12px] font-semibold text-accent-primary">
+                <div className="h-6 w-6 rounded-full bg-accent-secondary/20 border border-accent-secondary/30 flex items-center justify-center text-[10px] font-semibold text-accent-secondary shrink-0">
                   {initialsFromName(person)}
                 </div>
                 <span className="truncate">{person}</span>
@@ -98,12 +97,11 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="px-5 pb-5 pt-2 border-t border-divider">
-        <p className="text-[11px] text-muted-text">
-          anonymous peer feedback
+      <div className="px-4 pb-4 pt-3 border-t border-divider">
+        <p className="text-[10px] text-muted-text tracking-[0.1em] uppercase">
+          anonymous · peer feedback
         </p>
       </div>
     </aside>
   );
 }
-

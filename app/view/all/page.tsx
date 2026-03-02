@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { getRecentFeedback } from "@/lib/actions";
 import { nameToSlug } from "@/lib/people";
@@ -9,17 +11,21 @@ export default async function ViewAllPage() {
   return (
     <div className="px-6 py-8 lg:px-10 lg:py-10">
       <div className="max-w-5xl mx-auto space-y-6">
+
         <header>
-          <h1 className="text-2xl lg:text-[28px] font-bold text-body-text">
-            All feedback
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
+            Activity
+          </p>
+          <h1 className="font-serif-display italic text-[28px] lg:text-[34px] font-bold text-white">
+            All Feedback
           </h1>
-          <p className="mt-2 text-sm text-muted-text">
-            The most recent anonymous feedback entries across the NUSA team.
+          <p className="mt-2 text-[12.5px] text-muted-text">
+            → The most recent anonymous feedback entries across the NUSA team.
           </p>
         </header>
 
         {feedback.length === 0 ? (
-          <p className="text-sm text-muted-text">
+          <p className="text-[12.5px] text-muted-text">
             No feedback has been shared yet.
           </p>
         ) : (
@@ -35,23 +41,23 @@ export default async function ViewAllPage() {
               return (
                 <li
                   key={entry.id}
-                  className="bg-card-bg rounded-xl shadow-card p-4 flex items-center gap-3"
+                  className="bg-card-bg rounded-[10px] shadow-card p-4 flex items-center gap-3"
                 >
-                  <div className="h-9 w-9 rounded-full bg-accent-secondary flex items-center justify-center text-[12px] font-semibold text-accent-primary">
+                  <div className="h-9 w-9 rounded-full bg-accent-secondary/20 border border-accent-secondary/30 flex items-center justify-center text-[12px] font-semibold text-accent-secondary shrink-0">
                     {initials}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-body-text truncate">
+                    <p className="text-[12.5px] text-white truncate">
                       Anonymous shared feedback about{" "}
-                      <span className="font-medium">{person}</span>
+                      <span className="font-semibold text-accent-primary">{person}</span>
                     </p>
-                    <p className="text-xs text-muted-text">
+                    <p className="text-[11px] text-muted-text mt-0.5">
                       {formatRelativeTime(entry.created_at)}
                     </p>
                   </div>
                   <Link
                     href={`/view/${nameToSlug(person)}`}
-                    className="text-xs text-accent-primary hover:underline"
+                    className="text-[11px] text-accent-primary hover:text-white transition-colors shrink-0"
                   >
                     View →
                   </Link>
@@ -64,4 +70,3 @@ export default async function ViewAllPage() {
     </div>
   );
 }
-
