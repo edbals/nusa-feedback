@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { PEOPLE, nameToSlug } from "@/lib/people";
+import { PEOPLE, PEOPLE_PHOTOS, nameToSlug } from "@/lib/people";
 
 function initialsFromName(name: string) {
   const parts = name.trim().split(" ");
@@ -87,8 +88,8 @@ export default function Sidebar() {
                     : "text-muted-text hover:text-white hover:bg-white/5"
                 }`}
               >
-                <div className="h-6 w-6 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[10px] font-semibold text-accent-primary shrink-0">
-                  {initialsFromName(person)}
+                <div className="h-6 w-6 rounded-full overflow-hidden border border-accent-primary/25 shrink-0">
+                  <Image src={PEOPLE_PHOTOS[person]} alt={person} width={24} height={24} className="object-cover w-full h-full" />
                 </div>
                 <span className="truncate">{person}</span>
               </Link>

@@ -5,6 +5,13 @@ export const PEOPLE = [
   "Edbert Sunarpo",
 ] as const;
 
+export const PEOPLE_PHOTOS: Record<string, string> = {
+  "Clementie Freya": "/team/clementie.png",
+  "Ibrasya Pohan": "/team/ibrasya.png",
+  "Keanan Wongso": "/team/keanan.png",
+  "Edbert Sunarpo": "/team/edbert.png",
+};
+
 export type PersonName = (typeof PEOPLE)[number];
 
 export function nameToSlug(name: string): string {

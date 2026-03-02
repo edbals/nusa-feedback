@@ -1,8 +1,9 @@
 export const dynamic = "force-dynamic";
 
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getFeedbackForRecipient } from "@/lib/actions";
-import { slugToName } from "@/lib/people";
+import { slugToName, PEOPLE_PHOTOS } from "@/lib/people";
 import { formatRelativeTime } from "@/lib/date";
 
 type Props = { params: Promise<{ name: string }> };
@@ -14,11 +15,7 @@ export default async function ViewFeedbackPage({ params }: Props) {
 
   const feedback = await getFeedbackForRecipient(recipientName);
 
-  const initials = recipientName
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .toUpperCase();
+  const photo = PEOPLE_PHOTOS[recipientName];
 
   return (
     <div className="px-6 py-8 lg:px-10 lg:py-10">
@@ -26,8 +23,8 @@ export default async function ViewFeedbackPage({ params }: Props) {
 
         {/* Header */}
         <header className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-full bg-accent-primary/10 border-2 border-accent-primary/30 flex items-center justify-center text-[18px] font-semibold text-accent-primary shrink-0">
-            {initials}
+          <div className="h-14 w-14 rounded-full overflow-hidden border-2 border-accent-primary/30 shrink-0">
+            <Image src={photo} alt={recipientName} width={56} height={56} className="object-cover w-full h-full" />
           </div>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">

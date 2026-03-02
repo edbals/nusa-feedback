@@ -1,8 +1,9 @@
 export const dynamic = "force-dynamic";
 
+import Image from "next/image";
 import Link from "next/link";
 import { getRecentFeedback } from "@/lib/actions";
-import { nameToSlug } from "@/lib/people";
+import { nameToSlug, PEOPLE_PHOTOS } from "@/lib/people";
 import { formatRelativeTime } from "@/lib/date";
 
 export default async function ViewAllPage() {
@@ -32,19 +33,15 @@ export default async function ViewAllPage() {
           <ul className="space-y-3">
             {feedback.map((entry) => {
               const person = entry.recipient;
-              const initials = person
-                .split(" ")
-                .map((p) => p[0])
-                .join("")
-                .toUpperCase();
+              const photo = PEOPLE_PHOTOS[person];
 
               return (
                 <li
                   key={entry.id}
                   className="bg-card-bg rounded-[10px] shadow-card p-4 flex items-center gap-3"
                 >
-                  <div className="h-9 w-9 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[12px] font-semibold text-accent-primary shrink-0">
-                    {initials}
+                  <div className="h-9 w-9 rounded-full overflow-hidden border border-accent-primary/25 shrink-0">
+                    <Image src={photo} alt={person} width={36} height={36} className="object-cover w-full h-full" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[12.5px] text-white truncate">

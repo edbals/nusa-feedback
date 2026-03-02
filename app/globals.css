@@ -73,6 +73,12 @@ input[type='range'] {
   animation: pageFadeIn 200ms ease forwards;
 }
 
+/* Space Mono always uppercase */
+.font-serif-display {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 /* Thin cyan scrollbar */
 .sidebar-scroll {
   scrollbar-width: thin;

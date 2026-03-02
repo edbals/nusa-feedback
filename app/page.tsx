@@ -6,7 +6,8 @@ import {
   getFeedbackCounts,
   getRecentFeedback,
 } from "@/lib/actions";
-import { PEOPLE, nameToSlug } from "@/lib/people";
+import Image from "next/image";
+import { PEOPLE, PEOPLE_PHOTOS, nameToSlug } from "@/lib/people";
 import { formatRelativeTime } from "@/lib/date";
 import EngagementScore from "@/components/EngagementScore";
 
@@ -28,11 +29,11 @@ export default async function HomePage() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-1">
             Dashboard
           </p>
-          <h1 className="font-serif-display italic text-[28px] lg:text-[34px] font-bold text-white">
-            NUSA Team Feedback
+          <h1 className="font-serif-display text-[24px] lg:text-[30px] font-bold text-white leading-tight">
+            Chasing Impact: NUSA 360° Team Reflection
           </h1>
           <p className="mt-2 text-[12.5px] text-muted-text">
-            → Anonymous peer feedback across the NUSA team.
+            → Anonymous team-wide feedback to strengthen collaboration and performance.
           </p>
         </header>
 
@@ -65,16 +66,12 @@ export default async function HomePage() {
             ) : (
               <ul className="divide-y divide-divider">
                 {recent.map((item) => {
-                  const person = item.recipient;
-                  const initials = person
-                    .split(" ")
-                    .map((p) => p[0])
-                    .join("")
-                    .toUpperCase();
+                    const person = item.recipient;
+                  const photo = PEOPLE_PHOTOS[person];
                   return (
                     <li key={item.id} className="flex items-center gap-3 py-3">
-                      <div className="h-8 w-8 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[10px] font-semibold text-accent-primary shrink-0">
-                        {initials}
+                      <div className="h-8 w-8 rounded-full overflow-hidden border border-accent-primary/25 shrink-0">
+                        <Image src={photo} alt={person} width={32} height={32} className="object-cover w-full h-full" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-[12.5px] text-white truncate">
@@ -108,11 +105,7 @@ export default async function HomePage() {
             {PEOPLE.map((name) => {
               const slug = nameToSlug(name);
               const count = counts[name] ?? 0;
-              const initials = name
-                .split(" ")
-                .map((p) => p[0])
-                .join("")
-                .toUpperCase();
+              const photo = PEOPLE_PHOTOS[name];
 
               return (
                 <article
@@ -120,8 +113,8 @@ export default async function HomePage() {
                   className="bg-card-bg rounded-[10px] shadow-card hover:shadow-card-strong transition-shadow duration-200 p-5 flex flex-col gap-4"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[12px] font-semibold text-accent-primary shrink-0">
-                      {initials}
+                    <div className="h-10 w-10 rounded-full overflow-hidden border border-accent-primary/25 shrink-0">
+                      <Image src={photo} alt={name} width={40} height={40} className="object-cover w-full h-full" />
                     </div>
                     <div>
                       <h3 className="text-[15px] font-bold text-white">{name}</h3>
