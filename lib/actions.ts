@@ -76,9 +76,9 @@ export type DashboardOverview = {
 };
 
 export async function getDashboardOverview(): Promise<DashboardOverview> {
-  const { data, error } = await supabase
+  const { data, count, error } = await supabase
     .from("feedback")
-    .select("created_at", { count: "exact", head: false })
+    .select("created_at", { count: "exact" })
     .order("created_at", { ascending: false })
     .limit(1);
 
@@ -87,7 +87,7 @@ export async function getDashboardOverview(): Promise<DashboardOverview> {
     return { totalCount: 0, lastUpdated: null };
   }
 
-  const totalCount = data?.length ?? 0;
+  const totalCount = count ?? 0;
   const lastUpdated = data && data[0] ? data[0].created_at : null;
 
   return { totalCount, lastUpdated };
