@@ -1,5 +1,6 @@
 "use server";
 
+import { unstable_noStore as noStore } from "next/cache";
 import { supabase } from "./supabase";
 
 export type SubmitState = { error?: string; success?: boolean };
@@ -37,6 +38,7 @@ export async function submitFeedback(
 }
 
 export async function getFeedbackCounts(): Promise<Record<string, number>> {
+  noStore();
   const { data, error } = await supabase
     .from("feedback")
     .select("recipient");
@@ -56,6 +58,7 @@ export async function getFeedbackCounts(): Promise<Record<string, number>> {
 export async function getFeedbackForRecipient(
   recipientName: string
 ): Promise<{ id: string; what_i_like: string; can_improve: string; created_at: string }[]> {
+  noStore();
   const { data, error } = await supabase
     .from("feedback")
     .select("id, what_i_like, can_improve, created_at")
@@ -76,6 +79,7 @@ export type DashboardOverview = {
 };
 
 export async function getDashboardOverview(): Promise<DashboardOverview> {
+  noStore();
   const { data, count, error } = await supabase
     .from("feedback")
     .select("created_at", { count: "exact" })
@@ -102,6 +106,7 @@ export type RecentFeedbackRow = {
 export async function getRecentFeedback(
   limit = 5
 ): Promise<RecentFeedbackRow[]> {
+  noStore();
   const { data, error } = await supabase
     .from("feedback")
     .select("id, recipient, created_at")
