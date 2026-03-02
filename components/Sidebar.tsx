@@ -87,7 +87,7 @@ export default function Sidebar() {
                     : "text-muted-text hover:text-white hover:bg-white/5"
                 }`}
               >
-                <div className="h-6 w-6 rounded-full bg-accent-secondary/20 border border-accent-secondary/30 flex items-center justify-center text-[10px] font-semibold text-accent-secondary shrink-0">
+                <div className="h-6 w-6 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[10px] font-semibold text-accent-primary shrink-0">
                   {initialsFromName(person)}
                 </div>
                 <span className="truncate">{person}</span>

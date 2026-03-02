@@ -78,7 +78,7 @@ export default function SubmitForm() {
         <div>
           <label
             htmlFor="can_improve"
-            className="block text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-secondary mb-2"
+            className="block text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-primary mb-2"
           >
             → What could be improved
           </label>

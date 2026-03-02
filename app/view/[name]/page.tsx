@@ -26,7 +26,7 @@ export default async function ViewFeedbackPage({ params }: Props) {
 
         {/* Header */}
         <header className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-full bg-accent-secondary/20 border-2 border-accent-secondary/40 flex items-center justify-center text-[18px] font-semibold text-accent-secondary shrink-0">
+          <div className="h-14 w-14 rounded-full bg-accent-primary/10 border-2 border-accent-primary/30 flex items-center justify-center text-[18px] font-semibold text-accent-primary shrink-0">
             {initials}
           </div>
           <div>
@@ -70,7 +70,7 @@ export default async function ViewFeedbackPage({ params }: Props) {
                   <hr className="border-divider" />
 
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-secondary mb-2">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-text mb-2">
                       → What could improve
                     </p>
                     <p className="text-[12.5px] text-white whitespace-pre-wrap">

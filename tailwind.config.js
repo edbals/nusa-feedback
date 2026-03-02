@@ -24,7 +24,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["'TT Interphases'", "var(--font-inter)", "system-ui", "sans-serif"],
-        "serif-display": ["Georgia", "serif"],
+        "serif-display": ["'TT Interphases Mono'", "'Courier New'", "monospace"],
       },
       boxShadow: {
         card: "0 1px 4px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.07)",

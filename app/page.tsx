@@ -73,7 +73,7 @@ export default async function HomePage() {
                     .toUpperCase();
                   return (
                     <li key={item.id} className="flex items-center gap-3 py-3">
-                      <div className="h-8 w-8 rounded-full bg-accent-secondary/20 border border-accent-secondary/30 flex items-center justify-center text-[10px] font-semibold text-accent-secondary shrink-0">
+                      <div className="h-8 w-8 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[10px] font-semibold text-accent-primary shrink-0">
                         {initials}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -120,7 +120,7 @@ export default async function HomePage() {
                   className="bg-card-bg rounded-[10px] shadow-card hover:shadow-card-strong transition-shadow duration-200 p-5 flex flex-col gap-4"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-accent-secondary/20 border border-accent-secondary/30 flex items-center justify-center text-[12px] font-semibold text-accent-secondary shrink-0">
+                    <div className="h-10 w-10 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[12px] font-semibold text-accent-primary shrink-0">
                       {initials}
                     </div>
                     <div>

@@ -53,7 +53,7 @@ export default function EngagementScore({ baseScore, totalCount, lastUpdated }: 
           >
             <div
               className="absolute inset-[6px] rounded-full flex flex-col items-center justify-center"
-              style={{ background: "#0F2044" }}
+              style={{ background: "#07091A" }}
             >
               <span className="font-serif-display italic text-[44px] font-black text-accent-primary leading-none">
                 {score.toFixed(1)}

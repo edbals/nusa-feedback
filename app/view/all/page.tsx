@@ -43,7 +43,7 @@ export default async function ViewAllPage() {
                   key={entry.id}
                   className="bg-card-bg rounded-[10px] shadow-card p-4 flex items-center gap-3"
                 >
-                  <div className="h-9 w-9 rounded-full bg-accent-secondary/20 border border-accent-secondary/30 flex items-center justify-center text-[12px] font-semibold text-accent-secondary shrink-0">
+                  <div className="h-9 w-9 rounded-full bg-accent-primary/10 border border-accent-primary/25 flex items-center justify-center text-[12px] font-semibold text-accent-primary shrink-0">
                     {initials}
                   </div>
                   <div className="flex-1 min-w-0">
