@@ -3,6 +3,7 @@ import { Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import BottomNav from "@/components/BottomNav";
+import InteractiveBg from "@/components/InteractiveBg";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceMono.variable}`}>
-      <body className="min-h-screen bg-outer-bg text-body-text antialiased glow-bg">
+      <body className="min-h-screen bg-outer-bg text-body-text antialiased">
+        <InteractiveBg />
         <div className="min-h-screen flex">
           <Sidebar />
           <div className="flex-1 relative z-10 pb-16 md:pb-0">
